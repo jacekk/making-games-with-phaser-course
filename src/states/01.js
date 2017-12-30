@@ -19,6 +19,7 @@ function create() {
     logo
         .anchor
         .setTo(0.5, 0.5);
+    game.stage.backgroundColor = '#111';
 };
 
 function update() {};

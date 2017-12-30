@@ -2,14 +2,26 @@ import PIXI from 'expose-loader?PIXI!phaser-ce/build/custom/pixi.js';
 import p2 from 'expose-loader?p2!phaser-ce/build/custom/p2.js';
 import Phaser from 'expose-loader?Phaser!phaser-ce/build/custom/phaser-split.js';
 
-import state0 from './states/01';
+const states = [
+    '01',
+    '02',
+    '03',
+    '04',
+    '05',
+    '06',
+    '07',
+    '08',
+    '09'
+];
 
 window.game = new Phaser.Game(800, 600, Phaser.AUTO);
 
-game
-    .state
-    .add('state0', state0);
+states.forEach(item => {
+    game
+        .state
+        .add(`state${item}`, require(`./states/${item}`).default);
+})
 
 game
     .state
-    .start('state0');
+    .start('state01');
