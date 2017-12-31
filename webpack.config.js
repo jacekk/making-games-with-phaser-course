@@ -1,12 +1,12 @@
-const path = require('path');
-const CopyWebpackPlugin = require('copy-webpack-plugin');
+const path = require('path')
+const CopyWebpackPlugin = require('copy-webpack-plugin')
 
 module.exports = {
     context: path.resolve(__dirname, 'src'),
     entry: './index.js',
     output: {
         filename: 'bundle.js',
-        path: path.resolve(__dirname, 'dist')
+        path: path.resolve(__dirname, 'dist'),
     },
     module: {
         rules: [
@@ -17,23 +17,28 @@ module.exports = {
                     loader: 'babel-loader',
                     options: {
                         presets: ['env'],
-                        plugins: [require('babel-plugin-transform-object-rest-spread')]
-                    }
-                }
-            }
-        ]
+                        plugins: [
+                            require('babel-plugin-transform-object-rest-spread'),
+                        ],
+                    },
+                },
+            },
+        ],
     },
-    plugins: [new CopyWebpackPlugin([
+    plugins: [
+        new CopyWebpackPlugin([
             {
-                from: 'index.html'
-            }, {
-                from: 'index.css'
-            }
-        ])],
+                from: 'index.html',
+            },
+            {
+                from: 'index.css',
+            },
+        ]),
+    ],
     devServer: {
-        publicPath: "/",
-        contentBase: "./src",
+        publicPath: '/',
+        contentBase: './src',
         port: 8080,
-        open: true
-    }
-};
+        open: true,
+    },
+}

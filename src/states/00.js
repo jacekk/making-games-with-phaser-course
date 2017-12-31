@@ -1,23 +1,20 @@
-import {bindStatesChangeKeys} from '../utils'
+import { bindStatesChangeKeys } from '../utils'
 import dimentions from '../dimentions'
 
-const state = function () {}
+const state = function() {}
 const speed = 6
+
 let adam
 
 state.prototype = {
     preload,
     create,
-    update
+    update,
 }
 
 function preload() {
-    game
-        .load
-        .image('adam', '/assets/sprites/adam.png')
-    game
-        .load
-        .image('tree', '/assets/backgrounds/treeBG.png')
+    game.load.image('adam', '/assets/sprites/adam.png')
+    game.load.image('tree', '/assets/backgrounds/treeBG.png')
 }
 
 function create() {
@@ -25,19 +22,15 @@ function create() {
     game.stage.backgroundColor = '#000'
     game.scale.scaleMode = Phaser.ScaleManager.SHOW_ALL
 
-    const treeBg = game
-        .add
-        .sprite(0, 0, 'tree')
+    const treeBg = game.add.sprite(0, 0, 'tree')
 
-    adam = game
-        .add
-        .sprite(dimentions.STAGE_CENTER_X, dimentions.STAGE_CENTER_Y, 'adam')
-    adam
-        .anchor
-        .setTo(0.5, 0.5)
-    adam
-        .scale
-        .setTo(0.7, 0.7)
+    adam = game.add.sprite(
+        dimentions.STAGE_CENTER_X,
+        dimentions.STAGE_CENTER_Y,
+        'adam'
+    )
+    adam.anchor.setTo(0.5, 0.5)
+    adam.scale.setTo(0.7, 0.7)
 }
 
 function update() {
