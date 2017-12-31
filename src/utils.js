@@ -5,6 +5,7 @@ export const startStageOnKey = (name, key) => {
 }
 
 export const bindStatesChangeKeys = () => {
+    startStageOnKey('state00', Phaser.Keyboard.ZERO);
     startStageOnKey('state01', Phaser.Keyboard.ONE);
     startStageOnKey('state02', Phaser.Keyboard.TWO);
     startStageOnKey('state03', Phaser.Keyboard.THREE);
