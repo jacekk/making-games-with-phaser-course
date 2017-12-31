@@ -3,18 +3,20 @@ import DIMS from '../dimentions'
 
 const state = function() {}
 
+state.prototype = {
+    preload,
+    create,
+    update,
+}
+
+export default state
+
 const ADAM_MAX_Y = 800
 const ADAM_MIN_Y = 395
 const ADAM_SCALE = 0.7
 const ADAM_SPEED = 30
 
 let adam
-
-state.prototype = {
-    preload,
-    create,
-    update,
-}
 
 function preload() {
     game.load.image('adam', '/assets/sprites/adam.png')
@@ -29,19 +31,16 @@ function create() {
     game.world.setBounds(0, 0, DIMS.BG_WIDTH, DIMS.BG_HEIGHT)
 
     const treeBg = game.add.sprite(0, 0, 'tree')
+    const deadzoneArgs = [DIMS.STAGE_CENTER_X - 300, 0, 600, DIMS.STAGE_WIDTH]
 
     adam = game.add.sprite(DIMS.STAGE_CENTER_X, DIMS.STAGE_CENTER_Y, 'adam')
+
     adam.anchor.setTo(0.5, 0.5)
     adam.scale.setTo(ADAM_SCALE, ADAM_SCALE)
     game.physics.enable(adam)
     adam.body.collideWorldBounds = true
     game.camera.follow(adam)
-    game.camera.deadzone = new Phaser.Rectangle(
-        DIMS.STAGE_CENTER_X - 300,
-        0,
-        600,
-        DIMS.STAGE_WIDTH
-    )
+    game.camera.deadzone = new Phaser.Rectangle(...deadzoneArgs)
 }
 
 function update() {
@@ -66,5 +65,3 @@ function update() {
         }
     }
 }
-
-export default state
