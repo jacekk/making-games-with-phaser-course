@@ -13,6 +13,7 @@ function preload() {};
 function create() {
     bindStatesChangeKeys();
     game.stage.backgroundColor = '#000';
+    game.scale.scaleMode = Phaser.ScaleManager.SHOW_ALL;
 };
 
 function update() {};

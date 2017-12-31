@@ -25,4 +25,4 @@ states.forEach(item => {
 
 game
     .state
-    .start('state01');
+    .start('state00');
