@@ -1,3 +1,5 @@
+import { bindStatesChangeKeys } from '../utils';
+
 const state = function () {};
 
 state.prototype = {
@@ -9,6 +11,7 @@ state.prototype = {
 function preload() {};
 
 function create() {
+    bindStatesChangeKeys();
     game.stage.backgroundColor = '#999';
 };
 
