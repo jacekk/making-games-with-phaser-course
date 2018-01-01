@@ -19,14 +19,14 @@ const ADAM_SPEED = 30
 let adam
 
 function preload() {
-    game.load.image('adam', '/assets/sprites/adam.png')
+    const adamPath = '/assets/spritesheets/adamSheet.png'
+    game.load.spritesheet('adam', adamPath, 240, 370)
     game.load.image('tree', '/assets/backgrounds/treeBG.png')
 }
 
 function create() {
     bindStatesChangeKeys()
     game.physics.startSystem(Phaser.Physics.ARCADE)
-    game.stage.backgroundColor = '#000'
     game.scale.scaleMode = Phaser.ScaleManager.SHOW_ALL
     game.world.setBounds(0, 0, DIMS.BG_WIDTH, DIMS.BG_HEIGHT)
 
@@ -35,6 +35,7 @@ function create() {
 
     adam = game.add.sprite(DIMS.STAGE_CENTER_X, DIMS.STAGE_CENTER_Y, 'adam')
 
+    adam.animations.add('walk', [...Array(5).keys()])
     adam.anchor.setTo(0.5, 0.5)
     adam.scale.setTo(ADAM_SCALE, ADAM_SCALE)
     game.physics.enable(adam)
@@ -47,10 +48,13 @@ function update() {
     if (game.input.keyboard.isDown(Phaser.Keyboard.RIGHT)) {
         adam.x += ADAM_SPEED
         adam.scale.setTo(ADAM_SCALE, ADAM_SCALE)
-    }
-    if (game.input.keyboard.isDown(Phaser.Keyboard.LEFT)) {
+        adamWalk()
+    } else if (game.input.keyboard.isDown(Phaser.Keyboard.LEFT)) {
         adam.x -= ADAM_SPEED
         adam.scale.setTo(-ADAM_SCALE, ADAM_SCALE)
+        adamWalk()
+    } else {
+        adamStop()
     }
     if (game.input.keyboard.isDown(Phaser.Keyboard.DOWN)) {
         adam.y += ADAM_SPEED
@@ -64,4 +68,13 @@ function update() {
             adam.y = ADAM_MIN_Y
         }
     }
+}
+
+function adamWalk() {
+    adam.animations.play('walk', 30, true)
+}
+
+function adamStop() {
+    adam.animations.stop('walk')
+    adam.frame = 0
 }

@@ -1,20 +1,20 @@
-import { bindStatesChangeKeys } from '../utils';
+import { bindStatesChangeKeys } from '../utils'
+import DIMS from '../dimentions'
 
-const state = function () {};
+const state = function() {}
 
 state.prototype = {
     preload,
     create,
-    update
-};
+    update,
+}
 
-function preload() {};
+export default state
+
+function preload() {}
 
 function create() {
-    bindStatesChangeKeys();
-    game.stage.backgroundColor = '#111';
-};
+    bindStatesChangeKeys()
+}
 
-function update() {};
-
-export default state;
+function update() {}
