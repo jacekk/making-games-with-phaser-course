@@ -4,8 +4,8 @@ import DIMS from '../dimentions'
 const state = function() {}
 
 state.prototype = {
-    preload,
     create,
+    preload,
     update,
 }
 
@@ -25,10 +25,10 @@ function preload() {
 }
 
 function create() {
-    bindStatesChangeKeys()
     game.physics.startSystem(Phaser.Physics.ARCADE)
     game.scale.scaleMode = Phaser.ScaleManager.SHOW_ALL
     game.world.setBounds(0, 0, DIMS.BG_WIDTH, DIMS.BG_HEIGHT)
+    bindStatesChangeKeys()
 
     const treeBg = game.add.sprite(0, 0, 'tree')
     const deadzoneArgs = [DIMS.STAGE_CENTER_X - 300, 0, 600, DIMS.STAGE_WIDTH]
