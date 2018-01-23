@@ -11,6 +11,8 @@ state.prototype = {
 
 export default state
 
+const BG_HEIGHT = 1000
+const BG_WIDTH = 2813
 const ADAM_MAX_Y = 800
 const ADAM_MIN_Y = 395
 const ADAM_SCALE = 0.7
@@ -27,7 +29,7 @@ function preload() {
 function create() {
     game.physics.startSystem(Phaser.Physics.ARCADE)
     game.scale.scaleMode = Phaser.ScaleManager.SHOW_ALL
-    game.world.setBounds(0, 0, DIMS.BG_WIDTH, DIMS.BG_HEIGHT)
+    game.world.setBounds(0, 0, BG_WIDTH, BG_HEIGHT)
     bindStatesChangeKeys()
 
     const treeBg = game.add.sprite(0, 0, 'tree')

@@ -1,6 +1,4 @@
 export default {
-    BG_HEIGHT: 1000,
-    BG_WIDTH: 2813,
     STAGE_CENTER_X: 1500 / 2,
     STAGE_CENTER_Y: 1000 / 2,
     STAGE_HEIGHT: 1000,
