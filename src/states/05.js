@@ -28,7 +28,7 @@ function create() {
     game.stage.backgroundColor = '#ff99dd'
     game.scale.scaleMode = Phaser.ScaleManager.SHOW_ALL
 
-    adam = game.add.sprite(DIMS.STAGE_CENTER_X, 500, 'adam')
+    adam = game.add.sprite(DIMS.STAGE_CENTER_X, DIMS.STAGE_CENTER_Y, 'adam')
     platform = game.add.sprite(0, 600, 'platform')
 
     platformGroup = game.add.group()
