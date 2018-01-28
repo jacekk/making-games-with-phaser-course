@@ -4,6 +4,8 @@
 
 My implementation of this course: https://udemy.com/making-games-with-phaser .
 
+<!-- Author's version: https://github.com/MiLeung/PhaserDemo -->
+
 ### Requirements
 
 - node ~8.x
