@@ -13,7 +13,22 @@ const TEXT_MARGIN = 200
 const LOREM_TEXT =
     'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.'
 
-function preload() {}
+window.WebFontConfig = {
+    active: function() {
+        console.log('WebFontConfig.active')
+        game.time.events.add(Phaser.Timer.SECOND, createText, this)
+    },
+    google: {
+        families: ['Pacifico', 'Roboto'],
+    },
+}
+
+function preload() {
+    game.load.script(
+        'webfont',
+        '//ajax.googleapis.com/ajax/libs/webfont/1.6.26/webfont.js'
+    )
+}
 
 function create() {
     bindStatesChangeKeys()
@@ -21,21 +36,15 @@ function create() {
     game.scale.scaleMode = Phaser.ScaleManager.SHOW_ALL
 
     const textWidth = DIMS.STAGE_WIDTH - TEXT_MARGIN * 2
+    const textArgs = [textWidth, LOREM_TEXT, 40, '30px']
 
-    this.spellOutText(
-        TEXT_MARGIN,
-        TEXT_MARGIN,
-        textWidth,
-        LOREM_TEXT,
-        40,
-        '30px',
-        '#f55'
-    )
+    this.spellOutText(TEXT_MARGIN, 120, ...textArgs, '#f55', 'Pacifico')
+    this.spellOutText(TEXT_MARGIN, 450, ...textArgs, '#080', 'Roboto')
 }
 
-function spellOutText(x, y, width, text, speed, fontSize, fill) {
-    const sentence = game.add.text(x, y, '', { fontSize, fill })
-    const currentLine = game.add.text(TEXT_MARGIN, 40, '', { fontSize })
+function spellOutText(x, y, width, text, speed, fontSize, fill, font) {
+    const sentence = game.add.text(x, y, '', { fontSize, fill, font })
+    const currentLine = game.add.text(x, y - 50, '', { fontSize, font })
     const loop = game.time.events.loop(speed, addChar)
 
     let index = 0
