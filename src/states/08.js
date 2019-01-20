@@ -6,7 +6,6 @@ const state = function() {}
 state.prototype = {
     preload,
     create,
-    spellOutText,
 }
 
 const TEXT_MARGIN = 200
@@ -34,12 +33,14 @@ function create() {
     bindStatesChangeKeys()
     game.stage.backgroundColor = '#99e6e6'
     game.scale.scaleMode = Phaser.ScaleManager.SHOW_ALL
+}
 
+function createText() {
     const textWidth = DIMS.STAGE_WIDTH - TEXT_MARGIN * 2
     const textArgs = [textWidth, LOREM_TEXT, 40, '30px']
 
-    this.spellOutText(TEXT_MARGIN, 120, ...textArgs, '#f55', 'Pacifico')
-    this.spellOutText(TEXT_MARGIN, 450, ...textArgs, '#080', 'Roboto')
+    spellOutText(TEXT_MARGIN, 120, ...textArgs, '#f55', 'Pacifico')
+    spellOutText(TEXT_MARGIN, 450, ...textArgs, '#080', 'Roboto')
 }
 
 function spellOutText(x, y, width, text, speed, fontSize, fill, font) {

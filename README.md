@@ -8,18 +8,19 @@ My implementation of this course: https://udemy.com/making-games-with-phaser .
 
 ### Requirements
 
-- node ~8.x
+- node ~10.x
+- npm ~6.x
 
 ### NPM Tasks
 
-- **dev** - runs development server
+- **start** - runs development server
 - **build** - builds project to `dist` folder
-- **clean** - remove `dist` folder
+- **clean** - removes `dist` folder
 
 ### Setup
 
 1. `$ npm install`
-1. `$ npm run dev`
+1. `$ npm start`
 
 ### License
 

@@ -1,5 +1,6 @@
-import firebase from 'firebase'
+import firebase from 'firebase/app'
 import { bindStatesChangeKeys } from '../utils'
+require('firebase/database')
 
 const state = function() {}
 
